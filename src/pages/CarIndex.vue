@@ -28,7 +28,7 @@ export default {
 
 <template>
 	<main>
-        <h1>Cars</h1>
+        <RouterLink to="car/edit"><button>Add a Car</button></RouterLink>
         <CarList v-if="cars" @remove="removeCar" :cars="cars" />
         <img v-else src="../assets/puff.svg" alt="">
     </main>
