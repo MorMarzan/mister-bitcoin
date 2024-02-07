@@ -4,6 +4,7 @@
             <li v-for="car in cars">
                 <CarPreview :car="car"/>
                 <button @click="onRemoveCar(car._id)">x</button>
+                <RouterLink :to="`/car/${car._id}`"><button>Details</button></RouterLink>
             </li>
         </ul>
     </section>

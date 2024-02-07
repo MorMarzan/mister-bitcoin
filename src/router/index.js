@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import HomeView from '../pages/HomeView.vue'
 import CarIndex from '../pages/CarIndex.vue'
+import CarDetails from '../pages/CarDetails.vue'
 
 const options = {
     history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,11 @@ const options = {
         path: '/car',
         name: 'CarIndex',
         component: CarIndex
+      },
+      {
+        path: '/car/:carId',
+        name: 'CarDetails',
+        component: CarDetails
       },
       {
         path: '/about',
