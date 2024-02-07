@@ -14,8 +14,10 @@ export default {
       // required: true,
     },
   },
-};
+  async created() {
+
+  }
+}
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

@@ -1,5 +1,6 @@
 <template>
   <section v-if="contact" class="contact-details">
+    <!-- <img :src=`https://robohash.org/${contact.name}?set=set5`> -->
     <h2>{{ contact.name }}</h2>
     <h2>{{ contact.email }}</h2>
     <h2>{{ contact.phone }}</h2>

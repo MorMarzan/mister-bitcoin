@@ -133,7 +133,6 @@ const contactsDomeData = [
 async function query() {
     var contacts = await dbService.query(KEY)
 
-    console.log(contacts)
     if (!contacts || !contacts.length) {
         contacts = contactsDomeData
         await dbService.insert(KEY, contacts)
