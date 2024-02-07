@@ -1,6 +1,6 @@
 <template>
   <section v-if="contact" class="contact-details">
-    <!-- <img :src=`https://robohash.org/${contact.name}?set=set5`> -->
+    <img v-if="comtactImg" :src="comtactImg">
     <h2>{{ contact.name }}</h2>
     <h2>{{ contact.email }}</h2>
     <h2>{{ contact.phone }}</h2>
@@ -14,11 +14,14 @@ export default {
   data() {
     return {
       contact: null,
+      comtactImg: null
     }
   },
   async created() {
     const { contactId } = this.$route.params
     this.contact = await contactService.get(contactId)
+    this.comtactImg = `https://robohash.org/${this.contact._id}?set=set5`
+    console.log(this.comtactImg)
   },
 }
 </script>
