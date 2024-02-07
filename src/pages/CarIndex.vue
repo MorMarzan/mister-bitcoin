@@ -1,5 +1,8 @@
 <script>
 import { carService } from '../services/car.service.js'
+
+import CarList from '../cmps/CarList.vue'
+
 export default {
     data() {
         return {
@@ -8,6 +11,9 @@ export default {
     },
     async created() {
         this.cars = await carService.query()
+    },
+    components: {
+        CarList,
     }
 }
 </script>
@@ -15,6 +21,7 @@ export default {
 <template>
 	<main>
         <h1>Cars</h1>
-        <pre>{{cars}}</pre>
+        <CarList :cars="cars" />
+        
     </main>
 </template>
