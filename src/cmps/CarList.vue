@@ -5,6 +5,7 @@
                 <CarPreview :car="car"/>
                 <button @click="onRemoveCar(car._id)">x</button>
                 <RouterLink :to="`/car/${car._id}`"><button>Details</button></RouterLink>
+                <RouterLink :to="`/car/edit/${car._id}`"><button>Edit</button></RouterLink>
             </li>
         </ul>
     </section>

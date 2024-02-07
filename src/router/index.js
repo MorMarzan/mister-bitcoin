@@ -24,7 +24,7 @@ const options = {
         component: CarDetails
       },
       {
-        path: '/car/edit',
+        path: '/car/edit/:carId?',
         name: 'CarEdit',
         component: CarEdit
       },

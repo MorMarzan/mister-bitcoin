@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="onSaveCar" class="car-edit">
+    <form v-if="car" @submit.prevent="onSaveCar" class="car-edit">
         <input type="text" v-model="car.vendor">
         <input type="number" v-model="car.speed">
         <div class="actions">
@@ -23,8 +23,14 @@ export default {
             this.$router.push('/car')
         }
     },
-    created() {
-        this.car = carService.getEmptyCar()
+    async created() {
+        const { carId } = this.$route.params
+
+        if(carId){
+            this.car = await carService.get(carId)
+        } else {
+            this.car = carService.getEmptyCar()
+        }
     }
 }
 </script>
@@ -37,6 +43,7 @@ export default {
     padding: 10px;
     background-color: lightblue;
     margin-block: 10px;
+    
     .actions {
         justify-self: end;
     }
