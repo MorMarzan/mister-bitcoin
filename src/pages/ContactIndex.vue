@@ -47,7 +47,7 @@ export default {
     <ContactFilter @filter="filterContacts" />
     <RouterLink to="contact/edit"><button>Add a Contact</button></RouterLink>
     <ContactList v-if="contacts" @remove="removeContact" :contacts="filteredContacts" />
-    <img v-else src="../assets/puff.svg" alt="" />
+    <img v-else src="/images/puff.svg" alt="" />
   </main>
 </template>
 
