@@ -1,9 +1,9 @@
 <template>
-  <section v-if="contact" class="contact-details">
+  <section v-if="contact" class="contact-details flex align-center">
     <img v-if="comtactImg" :src="comtactImg">
     <h2>{{ contact.name }}</h2>
-    <h2>{{ contact.email }}</h2>
-    <h2>{{ contact.phone }}</h2>
+    <p>{{ contact.email }}</p>
+    <p>{{ contact.phone }}</p>
     <RouterLink to="/contact"><button>Back</button></RouterLink>
   </section>
 </template>
@@ -28,11 +28,9 @@ export default {
 
 <style lang="scss">
 .contact-details {
-  display: flex;
   flex-direction: column;
 
   padding: 10px;
-  background-color: rgb(236, 186, 92);
 
   a {
     align-self: end;

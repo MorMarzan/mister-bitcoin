@@ -3,13 +3,11 @@
     <ul>
       <li v-for="contact in contacts" :key="contact._id">
         <ContactPreview :contact="contact" />
-        <button @click="onRemoveContact(contact._id)">x</button>
-        <RouterLink :to="`/contact/${contact._id}`"
-          ><button>Details</button></RouterLink
-        >
-        <RouterLink :to="`/contact/edit/${contact._id}`"
-          ><button>Edit</button></RouterLink
-        >
+        <div class="btn-container">
+          <button @click="onRemoveContact(contact._id)">x</button>
+          <RouterLink :to="`/contact/${contact._id}`"><button>Details</button></RouterLink>
+          <RouterLink :to="`/contact/edit/${contact._id}`"><button>Edit</button></RouterLink>
+        </div>
       </li>
     </ul>
   </section>
@@ -36,15 +34,26 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/assets/styles/setup/variables.scss";
+
 .contact-list ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
   gap: 10px;
   list-style: none;
   padding: 0;
-}
-.contact-list ul li {
-  padding: 10px;
-  background-color: lightsteelblue;
+
+  li {
+    padding: 10px;
+    border: 1px solid $clrSecondary2;
+    border-radius: 20px;
+
+    .btn-container {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: start;
+      gap: 5px;
+    }
+  }
 }
 </style>

@@ -47,7 +47,7 @@ export default {
   gap: 10px;
   justify-items: start;
   padding: 10px;
-  background-color: lightblue;
+  // background-color: lightblue;
   margin-block: 10px;
 
   .actions {

@@ -43,12 +43,10 @@ export default {
 </script>
 
 <template>
-  <main>
-    <ContactFilter @filter="filterContacts" />
-    <RouterLink to="contact/edit"><button>Add a Contact</button></RouterLink>
-    <ContactList v-if="contacts" @remove="removeContact" :contacts="filteredContacts" />
-    <img v-else src="/images/puff.svg" alt="" />
-  </main>
+  <ContactFilter @filter="filterContacts" />
+  <RouterLink to="contact/edit"><button>Add a Contact</button></RouterLink>
+  <ContactList v-if="contacts" @remove="removeContact" :contacts="filteredContacts" />
+  <img v-else src="/images/puff.svg" alt="" />
 </template>
 
 <style lang="scss">

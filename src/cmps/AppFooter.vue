@@ -1,5 +1,5 @@
 <template>
-    <footer>
+    <footer class="flex justify-center align-center">
         <p>Coffeerights 2024</p>
     </footer>
 </template>
@@ -10,13 +10,10 @@ export default {
 </script>
 
 <style lang="scss">
-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+@import "@/assets/styles/setup/variables.scss";
 
-    height: 5vh;
-    padding: 10px;
-    background-color: lightblue;
+footer {
+    height: 7vh;
+    background-color: $clrPrimary1;
 }
 </style>

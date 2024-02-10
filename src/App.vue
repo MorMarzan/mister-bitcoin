@@ -2,7 +2,6 @@
 import AppHeader from './cmps/AppHeader.vue'
 import AppFooter from './cmps/AppFooter.vue'
 import UserMsg from './cmps/UserMsg.vue'
-import { bitcoinService } from './services/bitcoin.service'
 
 export default {
     components: {
@@ -16,15 +15,18 @@ export default {
 <template>
     <UserMsg />
     <AppHeader />
-    <main>
+    <main class="main-layout">
         <RouterView />
     </main>
     <AppFooter />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@import "@/assets/styles/setup/variables.scss";
+
 main {
-    min-height: calc(100vh - 10vh - 4em);
+    min-height: calc(100vh - 14vh);
+    background-color: $clrSecondary1;
 }
 
 nav a.router-link-exact-active {

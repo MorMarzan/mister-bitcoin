@@ -58,3 +58,7 @@ a:hover {
     // text-decoration: underline;
     color: $clrPrimary2
 }
+
+button {
+    @include button-style();
+}

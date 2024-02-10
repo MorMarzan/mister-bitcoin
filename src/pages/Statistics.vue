@@ -1,5 +1,13 @@
+<template>
+    <section class="statistics">
+        <Chart v-if="avgBlockDays && avgBlockSizes && avgBlockName" :labels="avgBlockDays" :data="avgBlockSizes"
+            :name="avgBlockName" />
+        <Chart v-if="marketPricekDays && marketPrices && marketPriceName" :labels="marketPricekDays" :data="marketPrices"
+            :name="marketPriceName" />
+    </section>
+</template>
+
 <script>
-// import BarChart from 'path/to/component/BarChart'
 import { bitcoinService } from '@/services/bitcoin.service'
 import { utilService } from '@/services/util.service'
 import Chart from '../cmps/Chart.vue'
@@ -31,13 +39,3 @@ export default {
     }
 }
 </script>
-
-<template>
-    <section class="statistics">
-        statistics
-        <Chart v-if="avgBlockDays && avgBlockSizes && avgBlockName" :labels="avgBlockDays" :data="avgBlockSizes"
-            :name="avgBlockName" />
-        <Chart v-if="marketPricekDays && marketPrices && marketPriceName" :labels="marketPricekDays" :data="marketPrices"
-            :name="marketPriceName" />
-    </section>
-</template>

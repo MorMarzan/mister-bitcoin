@@ -1,7 +1,9 @@
 <template>
   <section class="contact-filter">
-    <p>Filter</p>
-    <input @input="onFilter" type="text" v-model="filterBy.txt" />
+    <div class="container">
+      <p>Filter your contacts</p>
+      <input @input="onFilter" type="text" v-model="filterBy.txt" />
+    </div>
   </section>
 </template>
 
@@ -21,12 +23,14 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/assets/styles/setup/variables.scss";
+
 .contact-filter {
   display: flex;
   gap: 10px;
 
   padding: 10px;
-  background-color: lightblue;
-  margin: 10px 0;
+  margin-block-end: 10px;
+  background-color: $clrSecondary2;
 }
 </style>
