@@ -53,6 +53,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/assets/styles/setup/variables.scss";
+@import "@/assets/styles/setup/mixins.scss";
+
 .loader {
   display: block;
   width: 200px;
@@ -65,6 +68,13 @@ export default {
   .add {
     margin-block-end: 10px;
     display: block;
+    justify-self: start;
+
+    button {
+
+      @include button-style($bgColor: $clrSecondary-1);
+    }
+
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <section v-if="msg.txt" class="user-msg">
-        <p>{{msg.txt}}</p>
+        <p>{{ msg.txt }}</p>
     </section>
 </template> 
 
@@ -11,7 +11,7 @@ export default {
         return {
             msg: { txt: '', }
         }
-    }, 
+    },
     methods: {
         setMsg(msg) {
             this.msg.txt = msg.txt
@@ -19,19 +19,22 @@ export default {
         }
     },
     created() {
-        eventBus.on('user-msg', this.setMsg )
+        eventBus.on('user-msg', this.setMsg)
     }
 }
 </script>
 
 <style lang="scss">
+@import "@/assets/styles/setup/variables.scss";
+
 .user-msg {
     position: fixed;
-    top: 140px;
-    right: 2em;
-
+    bottom: calc(7vh + 20px);
+    right: 20px;
     padding: 10px;
     min-width: 200px;
-    background-color: lightblue;
+    background-color: $clrSecondary2;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 </style>
