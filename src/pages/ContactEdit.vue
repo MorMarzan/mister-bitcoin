@@ -2,12 +2,15 @@
   <form v-if="contact" @submit.prevent="onSaveContact" class="contact-edit">
     <label for="name">Name</label>
     <input type="text" v-model="contact.name" id="name" />
+
     <label for="phone">Phone</label>
     <input type="tel" v-model="contact.phone" id="phone" />
+
     <label for="email">Email</label>
     <input type="email" v-model="contact.email" id="email" />
+
     <div class="actions">
-      <RouterLink to="/contact"><button>Cancel</button></RouterLink>
+      <RouterLink to="/contact"><button type="button">Cancel</button></RouterLink>
       <button>Save</button>
     </div>
   </form>
@@ -16,6 +19,7 @@
 <script>
 import { contactService } from "@/services/contact.service"
 import { eventBus } from "@/services/eventBus.service"
+
 export default {
   data() {
     return {
@@ -26,7 +30,7 @@ export default {
     async onSaveContact() {
       const contact = await contactService.save(this.contact)
       this.$router.push("/contact")
-      eventBus.emit("user-msg", { txt: "Contact saved" })
+      eventBus.emit("user-msg", { txt: `${contact.name} saved` })
     },
   },
   async created() {
@@ -45,13 +49,16 @@ export default {
 .contact-edit {
   display: grid;
   gap: 10px;
-  justify-items: start;
+  place-items: start;
+  align-content: start;
   padding: 10px;
-  // background-color: lightblue;
   margin-block: 10px;
 
   .actions {
     justify-self: end;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 5px;
   }
 }
 </style>

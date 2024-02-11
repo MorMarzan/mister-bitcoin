@@ -30,7 +30,7 @@ export default {
   components: {
     ContactPreview,
   },
-};
+}
 </script>
 
 <style lang="scss">
@@ -42,6 +42,8 @@ export default {
   gap: 10px;
   list-style: none;
   padding: 0;
+  margin: unset;
+  margin-block-end: 10px;
 
   li {
     padding: 10px;

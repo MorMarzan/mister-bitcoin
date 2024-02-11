@@ -1,5 +1,5 @@
 <template>
-    <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
+    <Bar :options="chartOptions" :data="chartData" />
 </template>
   
 <script>
@@ -18,12 +18,32 @@ export default {
                 labels: this.labels,
                 datasets: [{
                     label: this.name,
+                    color: "#FFFFFF",
                     backgroundColor: '#f87979',
                     data: this.data
                 }]
             },
             chartOptions: {
-                responsive: true
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#FFFFFF'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: "#FFFFFF"
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: "#FFFFFF"
+                        }
+                    }
+                }
             }
         }
     }

@@ -1,3 +1,13 @@
+<template>
+  <section v-if="contacts" class="contact-index main-layout full">
+    <ContactFilter @filter="filterContacts" />
+    <RouterLink class="add" to="contact/edit"><button>Add a Contact</button></RouterLink>
+    <ContactList @remove="removeContact" :contacts="filteredContacts" />
+  </section>
+  <img v-else class="loader" src="/images/puff.svg" alt="" />
+</template>
+
+
 <script>
 import { contactService } from "../services/contact.service.js"
 import { eventBus } from "@/services/eventBus.service.js"
@@ -42,17 +52,19 @@ export default {
 }
 </script>
 
-<template>
-  <ContactFilter @filter="filterContacts" />
-  <RouterLink to="contact/edit"><button>Add a Contact</button></RouterLink>
-  <ContactList v-if="contacts" @remove="removeContact" :contacts="filteredContacts" />
-  <img v-else src="/images/puff.svg" alt="" />
-</template>
-
 <style lang="scss">
-img {
+.loader {
   display: block;
   width: 200px;
   margin: 100px auto;
+}
+
+.contact-index {
+  place-content: start;
+
+  .add {
+    margin-block-end: 10px;
+    display: block;
+  }
 }
 </style>

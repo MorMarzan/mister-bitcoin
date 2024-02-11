@@ -11,10 +11,6 @@
   </header>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style lang="scss">
 @import "@/assets/styles/setup/variables.scss";
 
@@ -29,6 +25,11 @@ header {
       display: grid;
       grid-auto-flow: column;
       gap: 5px;
+
+      .router-link-exact-active {
+        color: $clrPrimary2;
+        text-decoration: overline;
+      }
     }
   }
 }

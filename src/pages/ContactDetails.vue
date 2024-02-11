@@ -1,6 +1,6 @@
 <template>
   <section v-if="contact" class="contact-details flex align-center">
-    <img v-if="comtactImg" :src="comtactImg">
+    <img :src="imgSrc">
     <h2>{{ contact.name }}</h2>
     <p>{{ contact.email }}</p>
     <p>{{ contact.phone }}</p>
@@ -14,14 +14,16 @@ export default {
   data() {
     return {
       contact: null,
-      comtactImg: null
+    }
+  },
+  computed: {
+    imgSrc() {
+      return `https://robohash.org/${this.contact._id}?set=set5`
     }
   },
   async created() {
     const { contactId } = this.$route.params
     this.contact = await contactService.get(contactId)
-    this.comtactImg = `https://robohash.org/${this.contact._id}?set=set5`
-    console.log(this.comtactImg)
   },
 }
 </script>
@@ -31,6 +33,11 @@ export default {
   flex-direction: column;
 
   padding: 10px;
+
+  img {
+    max-width: 170px;
+    margin-block: 20px;
+  }
 
   a {
     align-self: end;

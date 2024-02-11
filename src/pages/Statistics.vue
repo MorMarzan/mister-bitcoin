@@ -11,6 +11,7 @@
 import { bitcoinService } from '@/services/bitcoin.service'
 import { utilService } from '@/services/util.service'
 import Chart from '../cmps/Chart.vue'
+
 export default {
     components: {
         Chart
@@ -39,3 +40,11 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.statistics {
+    display: grid;
+    margin-block: 10px;
+    place-content: space-around;
+}
+</style>
