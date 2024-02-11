@@ -1,7 +1,7 @@
 <template>
   <header class="main-layout full">
     <div class="container flex align-center">
-      <h1>Contacts</h1>
+      <h1>Mr. Bitcoin</h1>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/contact">Contacts</RouterLink>
