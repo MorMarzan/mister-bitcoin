@@ -1,29 +1,46 @@
-# contacts
+<h1 align="center">Mister Bitcoin 💼💰</h1>
 
-This template should help get you started developing with Vue 3 in Vite.
+<p align="center">
+  Welcome to <strong>Mister Bitcoin</strong>, your go-to digital wallet app for managing and transferring Bitcoins with ease. Built with the power of Vue.js, this single-page application offers a seamless and interactive experience.
+</p>
 
-## Recommended IDE Setup
+<h2>🚀 Key Features</h2>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+<ul>
+  <li><strong>Bitcoin Transfers:</strong> Transfer Bitcoins from your balance to any contact seamlessly.</li>
+  <li><strong>Contact Management:</strong> Add, edit, and remove contacts with just a few clicks.</li>
+  <li><strong>Live Market Data:</strong> Stay updated with real-time Bitcoin trade volume and exchange rates.</li>
+  <li><strong>Dynamic Charts:</strong> Visualize Bitcoin's market trends with responsive and interactive charts powered by Chart.js.</li>
+</ul>
 
-## Customize configuration
+<h2>🛠️ Built With</h2>
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<ul>
+  <li><strong>Vue.js:</strong> For crafting a reactive and engaging user interface.</li>
+  <li><strong>Sass:</strong> Stylish and manageable stylesheets.</li>
+  <li><strong>Vue Router:</strong> Single-page application navigation.</li>
+  <li><strong>Vuex:</strong> State management for Vue.js applications.</li>
+  <li><strong>Chart.js:</strong> Interactive and dynamic data visualizations.</li>
+</ul>
 
-## Project Setup
+<h2>🌟 Getting Started</h2>
 
-```sh
-npm install
-```
+<p>To explore Mister Bitcoin, visit the live app:</p>
+<a href="https://mormarzan.github.io/mister-bitcoin/#/">Mister Bitcoin Live</a>
 
-### Compile and Hot-Reload for Development
+<p>Or, run it locally:</p>
 
-```sh
-npm run dev
-```
+<pre><code>npm install       # Install dependencies
+npm run dev       # Run the app in development mode</code></pre>
 
-### Compile and Minify for Production
+<p>Open <a href="http://localhost:3000">http://localhost:3000</a> to view it in your browser.</p>
 
-```sh
-npm run build
-```
+<h2>🔧 Project Status</h2>
+
+<p>This project is my first venture into Vue.js. It's a testament to my learning journey and dedication to building functional and user-friendly applications. Feedback and contributions are welcome!</p>
+
+<h2>💬 Feedback</h2>
+
+<p>Your feedback is invaluable. Please feel free to <a href="https://github.com/mormarzan/mister-bitcoin/issues">open an issue</a> or submit a pull request with your suggestions or improvements.</p>
+
+<h3 align="center">Happy Bitcoin managing! 🚀💸</h3>
