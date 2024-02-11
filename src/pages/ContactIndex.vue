@@ -18,19 +18,18 @@ import ContactFilter from "../cmps/ContactFilter.vue"
 export default {
   data() {
     return {
-      contacts: null,
       filterBy: { txt: "" },
     }
   },
   methods: {
     async removeContact(contactId) {
-      await contactService.remove(contactId)
-
-      const idx = this.contacts.findIndex(
-        (contact) => contact._id === contactId
-      )
-      this.contacts.splice(idx, 1)
-      eventBus.emit("user-msg", { txt: `Deleted ${contactId}` })
+      try {
+        this.$store.dispatch({ type: 'removeContact', contactId })
+        eventBus.emit("user-msg", { txt: `Deleted ${contactId}` })
+      } catch (err) {
+        console.error(err)
+        eventBus.emit("user-msg", { txt: 'Problem deleting contact' })
+      }
     },
     filterContacts(filterBy) {
       this.filterBy = filterBy
@@ -41,9 +40,17 @@ export default {
       const regex = new RegExp(this.filterBy.txt, "i")
       return this.contacts.filter((contact) => regex.test(contact.name))
     },
+    contacts() {
+      return this.$store.getters.contacts
+    }
   },
   async created() {
-    this.contacts = await contactService.query()
+    try {
+      await this.$store.dispatch({ type: 'loadContacts' })
+    } catch (err) {
+      console.error(err)
+      eventBus.emit("user-msg", { txt: 'Problem getting contacts' })
+    }
   },
   components: {
     ContactList,

@@ -28,9 +28,15 @@ export default {
   },
   methods: {
     async onSaveContact() {
-      const contact = await contactService.save(this.contact)
-      this.$router.push("/contact")
-      eventBus.emit("user-msg", { txt: `${contact.name} saved` })
+      try {
+        await this.$store.dispatch({ type: 'saveContact', contactToSave: this.contact })
+        this.$router.push("/contact")
+        eventBus.emit("user-msg", { txt: `${this.contact.name} saved` })
+      } catch (err) {
+        console.log(err)
+        eventBus.emit("user-msg", { txt: `Problem saving ${this.contact.name}` })
+      }
+
     },
   },
   async created() {
