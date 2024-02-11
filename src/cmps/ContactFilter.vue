@@ -26,7 +26,7 @@ export default {
 @import "@/assets/styles/setup/variables.scss";
 
 .contact-filter {
-  gap: 10px;
+  // gap: 10px;
 
   padding-block: 10px;
   margin-block-end: 10px;

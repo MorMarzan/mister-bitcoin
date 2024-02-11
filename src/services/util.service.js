@@ -3,7 +3,8 @@
 export const utilService = {
     makeId,
     getRandomInt,
-    formatTS
+    formatTS,
+    debounce
 }
 
 function makeId() {
@@ -22,4 +23,12 @@ function getRandomInt(num1, num2) {
 function formatTS(ts) {
     const date = new Date(ts * 1000)
     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
+}
+
+function debounce(func, timeout = 300) {
+    let timer
+    return (...args) => {
+        clearTimeout(timer)
+        timer = setTimeout(() => { func.apply(this, args) }, timeout)
+    }
 }

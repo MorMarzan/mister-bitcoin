@@ -2,18 +2,21 @@
 import AppHeader from './cmps/AppHeader.vue'
 import AppFooter from './cmps/AppFooter.vue'
 import UserMsg from './cmps/UserMsg.vue'
+import Overlay from './cmps/Overlay.vue'
 
 export default {
     components: {
         AppHeader,
         AppFooter,
         UserMsg,
+        Overlay
     }
 }
 </script>
 
 <template>
     <UserMsg />
+    <Overlay />
     <AppHeader />
     <main class="main-layout">
         <RouterView />

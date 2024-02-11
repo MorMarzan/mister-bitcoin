@@ -1,7 +1,7 @@
 /* Breakpoint mixins */
 
 //mobilr only
-@mixin for-mobile-layout {
+@mixin for-mobile-only-layout {
     @media (max-width: calc($mobile-breakpoint + 40px)) {
         @content;
     }
