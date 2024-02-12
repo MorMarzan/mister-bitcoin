@@ -7,36 +7,33 @@ export const bitcoinService = {
 }
 
 async function getRate() {
-  // try {
-  //   const res = await axios.get('https://blockchain.info/tobtc?currency=USD&value=1')
-  //   console.log('Data getRate:', res.data)
-  //   return res.data
-  // } catch (err) {
-  //   console.error('Error fetching data of rate:', err)
-  // }
-  return 0.00002324
+  try {
+    const res = await axios.get('https://blockchain.info/tobtc?currency=USD&value=1')
+    return res.data
+  } catch (err) {
+    console.error('Error fetching data of rate:', err)
+    return 0.00002324
+  }
 }
 
 async function getMarketPriceHistory() {
-  // try {
-  //   const res = await axios.get('https://api.blockchain.info/charts/market-price?timespan=5weeks&format=json&cors=true')
-  //   // console.log('Data getRate:', res.data)
-  //   return res.data
-  // } catch (err) {
-  //   console.error('Error fetching data of market history:', err)
-  // }
-  return marketPriceHistory
+  try {
+    const res = await axios.get('https://api.blockchain.info/charts/market-price?timespan=5weeks&format=json&cors=true')
+    return res.data
+  } catch (err) {
+    console.error('Error fetching data of market history:', err)
+    return marketPriceHistory
+  }
 }
 
 async function getAvgBlockSize() {
-  // try {
-  //   const res = await axios.get('https://api.blockchain.info/charts/avg-block-size?timespan=5weeks&format=json&cors=true')
-  //   // console.log('Data getRate:', res.data)
-  //   return res.data
-  // } catch (err) {
-  //   console.error('Error fetching data of market history:', err)
-  // }
-  return avgBlock
+  try {
+    const res = await axios.get('https://api.blockchain.info/charts/avg-block-size?timespan=5weeks&format=json&cors=true')
+    return res.data
+  } catch (err) {
+    console.error('Error fetching data of market history:', err)
+    return avgBlock
+  }
 }
 
 const marketPriceHistory =
