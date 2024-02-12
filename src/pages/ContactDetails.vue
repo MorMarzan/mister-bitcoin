@@ -1,6 +1,7 @@
 <template>
   <section v-if="contact" class="contact-details flex align-center">
-    <img :src="imgSrc">
+    <img v-show="imgLoaded" @load="imgLoaded = true" :src="imgSrc" :alt="`${contact.name} image`">
+    <img v-if="!imgLoaded" class="loader" src="/images/puff.svg" alt="loader" />
     <h2>{{ contact.name }}</h2>
     <p>{{ contact.email }}</p>
     <p>{{ contact.phone }}</p>
@@ -14,6 +15,7 @@ export default {
   data() {
     return {
       contact: null,
+      imgLoaded: false
     }
   },
   computed: {
@@ -22,6 +24,7 @@ export default {
     }
   },
   async created() {
+    this.imgLoaded = false
     const { contactId } = this.$route.params
     this.contact = await contactService.get(contactId)
   },
