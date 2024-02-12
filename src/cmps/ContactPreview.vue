@@ -19,10 +19,12 @@ export default {
 
 <style lang="scss">
 .contact-preview {
+  overflow: hidden;
+
   .email {
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: inherit;
   }
 }
 </style>

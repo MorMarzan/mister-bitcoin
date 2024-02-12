@@ -47,8 +47,10 @@ export default {
 
   li {
     padding: 10px;
-    border: 1px solid $clrSecondary2;
+    border: 1px solid #79C8C7;
     border-radius: 20px;
+    display: grid;
+    align-content: space-between;
 
     .btn-container {
       display: grid;
