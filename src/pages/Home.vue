@@ -13,35 +13,52 @@
 
 
 <script>
-import { userService } from '@/services/user.service'
 import { bitcoinService } from '@/services/bitcoin.service'
+import { eventBus } from "@/services/eventBus.service.js"
 import Signup from '@/cmps/Signup.vue'
 
 export default {
     data() {
         return {
-            currUser: null,
             rate: null
-        };
+        }
     },
     async created() {
-        this.currUser = userService.getLoggedinUser()
         this.rate = await bitcoinService.getRate()
     },
     methods: {
         async _signup(userName) {
             try {
-                const user = await userService.signup(userName)
-                this.currUser = user
+                this.$store.dispatch({ type: 'signup', userName })
+                eventBus.emit("user-msg", { txt: `Welcome ${userName}` })
             } catch (err) {
                 console.error(err)
+                eventBus.emit("user-msg", { txt: 'Problem during signup' })
             }
         },
         _logout() {
-            this.currUser = null
-            userService.logout()
+            try {
+                this.$store.dispatch({ type: 'logout' })
+                eventBus.emit("user-msg", { txt: `Logout completed successfully` })
+            } catch (err) {
+                console.error(err)
+                eventBus.emit("user-msg", { txt: 'Problem during logout' })
+            }
+        },
+    },
+    computed: {
+        currUser() {
+            return this.$store.getters.user
         }
     },
+    // watch: {
+    //     currUser: {
+    //         handler(newValue) {
+    //             console.log("currUser changed", newValue);
+    //         },
+    //         deep: true
+    //     }
+    // },
     components: {
         Signup
     }
@@ -57,7 +74,6 @@ export default {
     .user-greeting {
         display: grid;
         gap: 10px;
-        // justify-content: center;
 
         button {
             justify-self: start;

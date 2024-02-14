@@ -12,14 +12,7 @@ const options = {
     {
       path: '/',
       name: 'home',
-      component: Home,
-      children: [
-        {
-          path: '/signup',
-          name: 'Signup',
-          component: Signup
-        }
-      ]
+      component: Home
     },
     {
       path: '/contact',

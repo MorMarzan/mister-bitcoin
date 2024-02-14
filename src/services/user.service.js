@@ -29,8 +29,13 @@ function get() {
     return user
 }
 
-function transferFunds() {
-
+async function transferFunds({ name, _id } = toContact, amount) {
+    const user = getLoggedinUser()
+    if (!user) throw new Error('Not loggedin')
+    user.balance = user.balance - amount
+    user.transactions.unshift({ toId: _id, to: name, at: Date.now(), amount })
+    await dbService.put(KEY, user)
+    return user.balance
 }
 
 function getTransactions() {

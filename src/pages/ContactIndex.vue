@@ -9,12 +9,10 @@
 
 
 <script>
-import { contactService } from "../services/contact.service.js"
 import { eventBus } from "@/services/eventBus.service.js"
 
 import ContactList from "../cmps/ContactList.vue"
 import ContactFilter from "../cmps/ContactFilter.vue"
-import { RouterView } from "vue-router"
 
 export default {
   data() {
@@ -56,7 +54,6 @@ export default {
   components: {
     ContactList,
     ContactFilter,
-    RouterView
   },
 }
 </script>
