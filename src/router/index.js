@@ -4,6 +4,7 @@ import Home from '../pages/Home.vue'
 import ContactIndex from '../pages/ContactIndex.vue'
 import ContactDetails from '../pages/ContactDetails.vue'
 import ContactEdit from '../pages/ContactEdit.vue'
+import Signup from '../cmps/Signup.vue'
 
 const options = {
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -11,12 +12,19 @@ const options = {
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '/signup',
+          name: 'Signup',
+          component: Signup
+        }
+      ]
     },
     {
       path: '/contact',
       name: 'ContactIndex',
-      component: ContactIndex
+      component: ContactIndex,
     },
     {
       path: '/contact/:contactId',

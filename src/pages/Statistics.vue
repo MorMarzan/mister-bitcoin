@@ -11,6 +11,7 @@
 import { bitcoinService } from '@/services/bitcoin.service'
 import { utilService } from '@/services/util.service'
 import Chart from '../cmps/Chart.vue'
+import { RouterView } from 'vue-router'
 
 export default {
     components: {
