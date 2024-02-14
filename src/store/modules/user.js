@@ -30,6 +30,16 @@ export default {
                 throw err
             }
         },
+        async updateUserBalance({ commit }, { toContact, amount }) {
+            try {
+                const user = await userService.transferFunds(toContact, amount)
+                commit({ type: 'setUser', user })
+            } catch (err) {
+                console.error(err)
+                throw err
+            }
+
+        }
     },
     getters: {
         user(state) { return state.user },

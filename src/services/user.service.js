@@ -3,21 +3,20 @@ import { storageService } from './storage.service.js'
 
 const KEY = 'loggedinUser'
 
-const user = {
-    name: "Puki Ben David",
-    balance: 100,
-    transactions: [
-        {
-            toId: "d99e3u2ih329",
-            to: "Moshiko",
-            at: 2652712571,
-            amount: 2
-        }
-    ]
-}
+// const user = {
+//     name: "Puki Ben David",
+//     balance: 100,
+//     transactions: [
+//         {
+//             toId: "d99e3u2ih329",
+//             to: "Moshiko",
+//             at: 2652712571,
+//             amount: 2
+//         }
+//     ]
+// }
 
 export const userService = {
-    get,
     getLoggedinUser,
     transferFunds,
     getTransactions,
@@ -25,17 +24,13 @@ export const userService = {
     logout
 }
 
-function get() {
-    return user
-}
-
 async function transferFunds({ name, _id } = toContact, amount) {
-    const user = getLoggedinUser()
+    const user = getLoggedinUser()[0]
     if (!user) throw new Error('Not loggedin')
     user.balance = user.balance - amount
     user.transactions.unshift({ toId: _id, to: name, at: Date.now(), amount })
     await dbService.put(KEY, user)
-    return user.balance
+    return user
 }
 
 function getTransactions() {

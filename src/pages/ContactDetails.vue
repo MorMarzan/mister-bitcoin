@@ -6,21 +6,42 @@
     <p>{{ contact.email }}</p>
     <p>{{ contact.phone }}</p>
     <RouterLink to="/contact"><button>Back</button></RouterLink>
+
+    <TransferFunds v-if="currUser" :contact="contact" :balance="currUser.balance" @transfer="transfer" />
+    <RouterLink v-else to="/">Signup to transfer bitcoins</RouterLink>
   </section>
 </template>
 
 <script>
+import TransferFunds from "@/cmps/TransferFunds.vue"
 import { contactService } from "@/services/contact.service"
+import { eventBus } from "@/services/eventBus.service.js"
+
 export default {
   data() {
     return {
       contact: null,
-      imgLoaded: false
+      imgLoaded: false,
     }
   },
   computed: {
     imgSrc() {
       return `https://robohash.org/${this.contact._id}?set=set5`
+    },
+    currUser() {
+      return this.$store.getters.user
+    }
+  },
+  methods: {
+    async transfer(amount) {
+      try {
+        this.$store.dispatch({ type: 'updateUserBalance', toContact: this.contact, amount })
+        this.$router.push("/contact")
+        eventBus.emit("user-msg", { txt: `Transfer to ${this.contact.name} was completed successfully` })
+      } catch (err) {
+        console.error(err)
+        eventBus.emit("user-msg", { txt: 'Problem during transfer' })
+      }
     }
   },
   async created() {
@@ -28,6 +49,7 @@ export default {
     const { contactId } = this.$route.params
     this.contact = await contactService.get(contactId)
   },
+  components: { TransferFunds },
 }
 </script>
 

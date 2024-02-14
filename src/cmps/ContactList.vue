@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import ContactPreview from "./ContactPreview.vue";
+import ContactPreview from "./ContactPreview.vue"
 export default {
   props: {
     contacts: {
@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     onRemoveContact(contactId) {
-      this.$emit("remove", contactId);
+      this.$emit("remove", contactId)
     },
   },
   components: {
