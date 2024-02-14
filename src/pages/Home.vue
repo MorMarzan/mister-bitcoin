@@ -1,9 +1,10 @@
 <template>
     <section class="home">
         <div v-if="currUser" class="user-greeting">
-            <p>Hello {{ currUser.name }}</p>
-            <p>Your balance is {{ currUser.balance }}$</p>
-            <p v-if="rate">Bitcoin to USD rate is {{ rate }}</p>
+            <img :src="currUser.imgUrl" :alt="currUser.name">
+            <p>Hello <span class="red">{{ currUser.name }}</span></p>
+            <p>Your balance is <span class="red">{{ currUser.balance }}$</span></p>
+            <p v-if="rate">Bitcoin to USD rate is <span class="red">{{ rate }}</span></p>
             <button @click="_logout">Logout</button>
         </div>
         <Signup v-else @signup="_signup" />
@@ -48,7 +49,27 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/assets/styles/setup/variables.scss";
+
 .home {
-    margin-block: 10px;
+    margin-block: 20px;
+
+    .user-greeting {
+        display: grid;
+        gap: 10px;
+        // justify-content: center;
+
+        button {
+            justify-self: start;
+        }
+
+        img {
+            width: 100px;
+        }
+
+        .red {
+            color: $clrPrimary2;
+        }
+    }
 }
 </style>
