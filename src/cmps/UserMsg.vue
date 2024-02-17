@@ -15,7 +15,7 @@ export default {
     methods: {
         setMsg(msg) {
             this.msg.txt = msg.txt
-            setTimeout(() => this.msg.txt = '', 2000)
+            setTimeout(() => this.msg.txt = '', 3000)
         }
     },
     created() {

@@ -33,8 +33,11 @@ async function transferFunds({ name, _id } = toContact, amount) {
     return user
 }
 
-function getTransactions() {
-
+function getTransactions(contactId) {
+    const user = getLoggedinUser()[0]
+    if (!user) throw new Error('Not loggedin')
+    const transactions = user.transactions
+    return (!contactId) ? transactions : transactions.filter(transaction => transaction.toId === contactId)
 }
 
 async function signup(userName) {

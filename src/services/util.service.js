@@ -20,8 +20,9 @@ function getRandomInt(num1, num2) {
     return Math.floor(Math.random() * (max - min)) + min
 }
 
-function formatTS(ts) {
-    const date = new Date(ts * 1000)
+function formatTS(ts, isMs = false) {
+    const t = isMs ? ts : ts * 1000
+    const date = new Date(t)
     return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
 }
 

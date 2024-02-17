@@ -5,16 +5,23 @@
     <h2>{{ contact.name }}</h2>
     <p>{{ contact.email }}</p>
     <p>{{ contact.phone }}</p>
-    <RouterLink to="/contact"><button>Back</button></RouterLink>
 
-    <TransferFunds v-if="currUser" :contact="contact" :balance="currUser.balance" @transfer="transfer" />
-    <RouterLink v-else to="/">Signup to transfer bitcoins</RouterLink>
+    <div class="transfer-wrapper">
+      <TransferFunds v-if="currUser" :contact="contact" :balance="currUser.balance" @transfer="transfer" />
+      <RouterLink v-else to="/">Signup to transfer bitcoins to {{ contact.name }}</RouterLink>
+    </div>
+
+    <TransactionList v-if="transactions?.length" :transactions="transactions" />
+
+    <RouterLink to="/contact" class="back"><button>Back</button></RouterLink>
   </section>
 </template>
 
 <script>
+import TransactionList from "@/cmps/TransactionList.vue"
 import TransferFunds from "@/cmps/TransferFunds.vue"
 import { contactService } from "@/services/contact.service"
+import { userService } from "@/services/user.service"
 import { eventBus } from "@/services/eventBus.service.js"
 
 export default {
@@ -22,6 +29,7 @@ export default {
     return {
       contact: null,
       imgLoaded: false,
+      transactions: null
     }
   },
   computed: {
@@ -42,30 +50,48 @@ export default {
         console.error(err)
         eventBus.emit("user-msg", { txt: 'Problem during transfer' })
       }
+    },
+    getTransactions() {
+      try {
+        this.transactions = userService.getTransactions(this.contact._id)
+      } catch (err) {
+        console.error(err)
+        eventBus.emit("user-msg", { txt: 'Problem getting transactions' })
+      }
     }
   },
   async created() {
     this.imgLoaded = false
     const { contactId } = this.$route.params
     this.contact = await contactService.get(contactId)
+    if (this.currUser) this.getTransactions()
   },
-  components: { TransferFunds },
+  components: { TransferFunds, TransactionList },
 }
 </script>
 
 <style lang="scss">
+@import "@/assets/styles/setup/variables.scss";
+
 .contact-details {
   flex-direction: column;
 
-  padding: 10px;
+  padding: 20px;
+
+  .transfer-wrapper {
+    border-block-start: 5px double $clrPrimary2;
+    margin-block-start: 30px;
+    padding-block-start: 30px;
+  }
 
   img {
     max-width: 170px;
-    margin-block: 20px;
+    margin-block-end: 20px;
   }
 
-  a {
+  .back {
     align-self: end;
+    margin-block-start: auto;
   }
 }
 </style>

@@ -3,7 +3,7 @@ import { userService } from '@/services/user.service'
 export default {
     state() {
         return {
-            user: userService.getLoggedinUser()[0],
+            user: userService.getLoggedinUser()?.[0] ?? null,
         }
     },
     mutations: {
@@ -33,7 +33,7 @@ export default {
         async updateUserBalance({ commit }, { toContact, amount }) {
             try {
                 const user = await userService.transferFunds(toContact, amount)
-                commit({ type: 'setUser', user })
+                // commit({ type: 'setUser', user })
             } catch (err) {
                 console.error(err)
                 throw err

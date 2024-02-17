@@ -3,7 +3,7 @@
         <div v-if="currUser" class="user-greeting">
             <img :src="currUser.imgUrl" :alt="currUser.name">
             <p>Hello <span class="red">{{ currUser.name }}</span></p>
-            <p>Your balance is <span class="red">{{ currUser.balance }}$</span></p>
+            <p>Your balance is <span class="red">{{ currUser.balance }}₿</span></p>
             <p v-if="rate">Bitcoin to USD rate is <span class="red">{{ rate }}</span></p>
             <button @click="_logout">Logout</button>
         </div>
