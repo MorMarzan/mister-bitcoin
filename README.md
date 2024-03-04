@@ -1,8 +1,11 @@
-<h1 align="center">Mister Bitcoin 💼💰</h1>
+<h1 align="center">Mister Bitcoin Vue💼💰</h1>
 
 <p align="center">
-  Welcome to <strong>Mister Bitcoin</strong>, your go-to digital wallet simulator app for managing and transferring Bitcoins with ease. Designed as an educational tool and built with the power of Vue.js, this single-page application offers a seamless and interactive experience.
+  Welcome to <strong>Mister Bitcoin</strong>, your go-to digital wallet simulator app for managing and transferring Bitcoins with ease. Designed as an educational tool and built with the power of Vue.js, this single-page application offers a seamless and interactive experience.<br>
+  <a href="https://github.com/MorMarzan/mister-bitcoin-angular">Cheout a replica of this app in Angular</a>
 </p>
+
+
 
 <h2>🚀 Key Features</h2>
 
